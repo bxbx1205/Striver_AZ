@@ -34,6 +34,7 @@ public class sumFourDivisors {
             }
             if (count==4){
                 total+=sum;
+                //test
             }
 
 
