@@ -49,8 +49,6 @@ public class spiralMatrix {
                 list.add(matrix[i][left]);}
                 left++;
             }
-
-
         }
 
         return list;
