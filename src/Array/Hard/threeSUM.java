@@ -2,31 +2,39 @@ package Array.Hard;
 import java.util.*;
 
 public class threeSUM {
-    static void main(String[] args) {
-        int[] arr = {0,1,1};
-        System.out.println(fourSum(arr,0));
+
+    public static void main(String[] args) {
+        int[] arr = {0, 1, 1};
+        System.out.println(threeSum(arr));
     }
-    static public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> ans = new ArrayList<>();
+
+    static public List<List<Integer>> threeSum(int[] nums) {
+
+        HashSet<List<Integer>> set = new HashSet<>();
 
         for (int i = 0; i < nums.length; i++) {
-            HashSet<Integer> set = new HashSet<>();
-            for (int j = i+1; j < nums.length ; j++) {
-                List<Integer> sub = new ArrayList<>();
-                int current = nums[j];
-                int needed = target- nums[i]-current;
 
-                if (set.contains(needed)){
-                    sub.add(nums[i]);
-                    sub.add(current);
-                    sub.add(needed);
+            HashSet<Integer> hashset = new HashSet<>();
 
-                    ans.add(sub);
+            for (int j = i + 1; j < nums.length; j++) {
+
+                int third = -(nums[i] + nums[j]);
+
+                if (hashset.contains(third)) {
+
+                    List<Integer> temp = new ArrayList<>();
+                    temp.add(nums[i]);
+                    temp.add(nums[j]);
+                    temp.add(third);
+
+                    Collections.sort(temp);
+                    set.add(temp);
                 }
-                set.add(current);
+
+                hashset.add(nums[j]);
             }
         }
 
-        return ans;
+        return new ArrayList<>(set);
     }
 }
